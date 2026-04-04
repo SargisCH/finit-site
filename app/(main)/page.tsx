@@ -42,8 +42,8 @@ function ContactForm() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e: { preventDefault(): void }) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    if (!form.name || !form.email || !form.message) return;
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -60,7 +60,7 @@ function ContactForm() {
   };
 
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
+    <div className="space-y-4">
       <div className="space-y-1.5">
         <label className="text-xs font-medium text-slate-700">Name</label>
         <input
@@ -104,13 +104,13 @@ function ContactForm() {
         <p className="text-sm text-red-500">Something went wrong. Please try again.</p>
       )}
       <Button
-        type="submit"
+        onClick={handleSubmit}
         disabled={status === "sending"}
         className="w-full bg-[#1a2f6f] text-white hover:bg-[#1a2f6f]/90 font-semibold disabled:opacity-60"
       >
         {status === "sending" ? "Sending…" : "Send Message"}
       </Button>
-    </form>
+    </div>
   );
 }
 
