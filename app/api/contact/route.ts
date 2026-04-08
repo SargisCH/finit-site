@@ -7,15 +7,20 @@ export async function POST(req: NextRequest) {
 
     console.log("Contact API received:", { name, email, message });
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("EMAIL_TO:", process.env.EMAIL_TO);
 
     if (!name || !email || !message) {
-      return NextResponse.json({ error: "All fields are required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "All fields are required." },
+        { status: 400 },
+      );
     }
 
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS || !process.env.EMAIL_TO) {
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
       console.error("Missing email configuration");
-      return NextResponse.json({ error: "Server email configuration is incomplete." }, { status: 500 });
+      return NextResponse.json(
+        { error: "Server email configuration is incomplete." },
+        { status: 500 },
+      );
     }
 
     const transporter = nodemailer.createTransport({
@@ -30,7 +35,7 @@ export async function POST(req: NextRequest) {
 
     await transporter.sendMail({
       from: `"FINIT Contact Form" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_TO,
+      to: email,
       replyTo: email,
       subject: `New Contact Form Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
@@ -45,6 +50,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error("Contact API Error:", error);
-    return NextResponse.json({ error: error.message || "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      { error: error.message || "Failed to send email" },
+      { status: 500 },
+    );
   }
 }
