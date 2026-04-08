@@ -34,8 +34,8 @@ export async function POST(req: NextRequest) {
     });
 
     await transporter.sendMail({
-      from: `"FINIT Contact Form" <${process.env.EMAIL_USER}>`,
-      to: email,
+      from: `"FINIT Contact Form" <${email}>`,
+      to: process.env.EMAIL_USER,
       replyTo: email,
       subject: `New Contact Form Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
