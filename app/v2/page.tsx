@@ -34,7 +34,31 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-export default function HomeV2() {
+export default function Home() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) return;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
 
@@ -370,12 +394,16 @@ export default function HomeV2() {
               </div>
             </div>
 
-            <form className="space-y-4" onSubmit={e => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="space-y-1.5">
                 <label className="text-xs font-medium text-slate-700">Name</label>
                 <input
                   type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
                   placeholder="Enter your name"
+                  required
                   className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
                 />
               </div>
@@ -383,20 +411,38 @@ export default function HomeV2() {
                 <label className="text-xs font-medium text-slate-700">Email</label>
                 <input
                   type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   placeholder="Enter your email"
+                  required
                   className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
                 />
               </div>
               <div className="space-y-1.5">
                 <label className="text-xs font-medium text-slate-700">Message</label>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
                   rows={5}
                   placeholder="Enter your message"
+                  required
                   className="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none"
                 />
               </div>
-              <Button className="w-full bg-[#1a2f6f] text-white hover:bg-[#1a2f6f]/90 font-semibold">
-                Get Started Now
+              {status === "success" && (
+                <p className="text-sm text-green-600 font-medium">Message sent! We&apos;ll get back to you soon.</p>
+              )}
+              {status === "error" && (
+                <p className="text-sm text-red-500 font-medium">Something went wrong. Please try again.</p>
+              )}
+              <Button 
+                type="submit"
+                disabled={status === "sending"}
+                className="w-full bg-[#1a2f6f] text-white hover:bg-[#1a2f6f]/90 font-semibold disabled:opacity-60"
+              >
+                {status === "sending" ? "Sending…" : "Get Started Now"}
               </Button>
             </form>
           </div>
