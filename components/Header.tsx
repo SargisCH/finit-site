@@ -15,10 +15,15 @@ export function Header({ dark = false }: { dark?: boolean }) {
           <Link href="/" className="flex items-center gap-2">
             <div className="size-7 rounded-full bg-primary flex items-center justify-center">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M7 1C4 1 2 3.5 2 6c0 3 2.5 5 5 6 2.5-1 5-3 5-6 0-2.5-2-5-5-5z" fill="#022c22"/>
+                <path
+                  d="M7 1C4 1 2 3.5 2 6c0 3 2.5 5 5 6 2.5-1 5-3 5-6 0-2.5-2-5-5-5z"
+                  fill="#022c22"
+                />
               </svg>
             </div>
-            <span className={`text-lg font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}>
+            <span
+              className={`text-lg font-bold tracking-tight ${dark ? "text-white" : "text-slate-900"}`}
+            >
               FINIT
             </span>
           </Link>
@@ -38,7 +43,7 @@ export function Header({ dark = false }: { dark?: boolean }) {
             ))}
           </nav>
         </div>
-        <Link href="http://185-47-174-99.cloud-xip.com:5173/" target="_blank">
+        <Link href="https://calc.finit.am" target="_blank">
           <Button className="bg-primary text-[#022c22] font-semibold px-5 hover:bg-primary/90">
             Get Started
           </Button>
