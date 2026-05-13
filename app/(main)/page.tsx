@@ -154,17 +154,13 @@ export default function Home() {
                 Try it now
               </p>
               <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                Financial Insights{" "}
-                <span className="text-primary italic">Redefined</span>
+                Smarter decisions
                 <br />
-                <span className="text-slate-900">
-                  With Our All-in-One Platform
-                </span>
+                with structured numbers
               </h1>
               <p className="text-slate-500 text-base max-w-md leading-relaxed">
-                Actionable intelligence for modern financial consulting. Empower
-                your decisions with data-driven precision and real-time market
-                movements.
+                Upload your e-invoices. We organize, categorize, and turn them
+                into meaningful reports - powered by AI.
               </p>
               <div className="flex items-center gap-3 flex-wrap">
                 <Link href="https://calc.finit.am" target="_blank">
@@ -239,10 +235,10 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-center gap-10 opacity-60">
             {[
-              "CHIPXPRT",
-              "GUINNESS GLOBAL INVESTORS",
-              "CHIPXPRT",
-              "GUINNESS GLOBAL INVESTORS",
+              "EXPENSES",
+              "REVENUE",
+              "PROFIT",
+              "CASH FLOW",
             ].map((name, i) => (
               <span
                 key={i}
@@ -264,14 +260,15 @@ export default function Home() {
                 Our Services
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
-                Everything you need
+                Understand where
                 <br />
-                to master markets
+                your money goes and
+                <br />
+                where it should go next
               </h2>
             </div>
             <p className="text-slate-500 text-sm max-w-xs leading-relaxed md:pt-10">
-              Cutting-edge tools designed for professional financial analysis
-              and portfolio management.
+              Your financial assistant, working 24/7
             </p>
           </div>
 
@@ -316,8 +313,8 @@ export default function Home() {
                     />
                   </svg>
                 ),
-                title: "Real-time Data",
-                desc: "Live market feeds and instant updates across all the global exchanges with sub-second latency.",
+                title: "AI-Powered Expense Classification",
+                desc: "Automatically categorize your expenses from e-invoices with precision.",
               },
               {
                 icon: (
@@ -336,8 +333,8 @@ export default function Home() {
                     />
                   </svg>
                 ),
-                title: "Precision Tools",
-                desc: "Advanced calculators and custom modeling software built for complex financial instruments.",
+                title: "Instant Financial Reports",
+                desc: "Our tools transfrom raw data into clear, structured reports in seconds.",
               },
               {
                 icon: (
@@ -358,7 +355,7 @@ export default function Home() {
                   </svg>
                 ),
                 title: "Secure Analysis",
-                desc: "Enterprise-grade encryption and SOC 2 compliance for all your sensitive financial data.",
+                desc: "Enterprise-grade security ensures your financial data remains protected, private, and fully under your control.",
               },
             ].map(({ icon, title, desc }) => (
               <div
@@ -385,16 +382,15 @@ export default function Home() {
                 About Finit
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                Bridging complexity
-                <br />
-                and strategy
+                Finance, simplified.
               </h2>
             </div>
             <p className="text-slate-300 text-sm max-w-xs leading-relaxed md:pt-10">
-              FINIT is a premier financial consulting platform dedicated to
-              bridging the gap between complex data and actionable strategy. Our
-              mission is to provide consultants with the most reliable, secure
-              and intuitive tools in the industry.
+              FINIT helps businesses turn financial data into clear, structured
+              insights. We provide intelligent tools to organize, analyze, and
+              understand financial data, helping businesses move forward with
+              confidence. From automated expense classification to instant
+              reports, we make understaning your numbers effortless.
             </p>
           </div>
 
@@ -440,10 +436,10 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl">
           <div className="text-center space-y-3 mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-              Scalable pricing for every team
+              Scalable pricing for every need
             </h2>
             <p className="text-slate-500 text-sm">
-              Choose the plan that fits your professional needs.
+              Choose the plan that fits your business.
             </p>
           </div>
 
@@ -462,10 +458,10 @@ export default function Home() {
                 <div className="text-4xl font-bold text-slate-900">$0</div>
                 <ul className="space-y-2.5">
                   {[
-                    "Basic analytics",
-                    "1 user access",
-                    "Public datasets only",
-                    "Advanced modeling",
+                    "Startup valuation calculator",
+                    "Upload up to 20 e-invoices",
+                    "Basic expense categorization",
+                    "Simple summary report",
                   ].map((f) => (
                     <li
                       key={f}
@@ -515,10 +511,10 @@ export default function Home() {
                 </div>
                 <ul className="space-y-2.5">
                   {[
+                    "Unlimited invoices",
+                    "Full IA analysis",
+                    "Advanced reports",
                     "Advanced modeling tools",
-                    "Unlimited reports",
-                    "Priority email support",
-                    "Custom dashboard views",
                   ].map((f) => (
                     <li
                       key={f}
@@ -549,22 +545,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="flex-grow space-y-6 py-6">
                 <div className="text-4xl font-bold text-slate-900">Custom</div>
-                <ul className="space-y-2.5">
-                  {[
-                    "Custom integrations",
-                    "Dedicated account manager",
-                    "SSO & Advanced security",
-                    "API Access",
-                  ].map((f) => (
-                    <li
-                      key={f}
-                      className="flex items-center gap-2.5 text-sm text-slate-600"
-                    >
-                      <Check className="size-4 text-primary stroke-[2.5px] shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-sm text-slate-500">Coming Soon...</p>
               </CardContent>
               <CardFooter>
                 <Button
@@ -607,11 +588,10 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl">
           <div className="bg-[#1a2f6f] rounded-3xl py-20 px-8 text-center space-y-5">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Ready to elevate your consulting?
+              Startup Valuation Calculator
             </h2>
             <p className="text-slate-300 text-sm max-w-sm mx-auto">
-              Join thousands of financial professionals who rely on FINIT for
-              their daily intelligence needs.
+              Join now and start understanding your business valuation.
             </p>
             <Link href="https://calc.finit.am" target="_blank">
               <Button className="bg-primary text-[#022c22] font-semibold px-8 hover:bg-primary/90 mt-2">
@@ -663,7 +643,7 @@ export default function Home() {
       {/* ── Footer ── */}
       <footer className="bg-[#0d1b3e] text-slate-400 py-14 px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
             {/* Brand */}
             <div className="space-y-4 md:col-span-1">
               <div className="flex items-center gap-2">
@@ -678,44 +658,20 @@ export default function Home() {
                 <span className="text-white font-bold text-base">FINIT</span>
               </div>
               <p className="text-xs leading-relaxed">
-                The future of financial consulting is here. High-precision data
+                The future of financial reports is here. High-precision data
                 for the modern era.
               </p>
               <div className="flex items-center gap-3">
-                {["f", "𝕏", "in"].map((s) => (
-                  <div
-                    key={s}
-                    className="size-7 rounded-full border border-slate-700 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:border-slate-500 cursor-pointer transition-colors"
-                  >
-                    {s}
-                  </div>
-                ))}
+                <div className="size-7 rounded-full border border-slate-700 flex items-center justify-center text-xs text-slate-400 hover:text-white hover:border-slate-500 cursor-pointer transition-colors">
+                  in
+                </div>
               </div>
             </div>
 
             {/* Company */}
             <div className="space-y-3">
               <h4 className="text-white text-sm font-semibold">Company</h4>
-              {["Services", "About", "Careers", "Contact"].map((l) => (
-                <a
-                  key={l}
-                  href="#"
-                  className="block text-xs hover:text-white transition-colors"
-                >
-                  {l}
-                </a>
-              ))}
-            </div>
-
-            {/* Solutions */}
-            <div className="space-y-3">
-              <h4 className="text-white text-sm font-semibold">Solutions</h4>
-              {[
-                "For Startups",
-                "For Agencies",
-                "Enterprises",
-                "Compliance",
-              ].map((l) => (
+              {["Services", "About", "Contact"].map((l) => (
                 <a
                   key={l}
                   href="#"
@@ -729,7 +685,7 @@ export default function Home() {
             {/* Resources */}
             <div className="space-y-3">
               <h4 className="text-white text-sm font-semibold">Resources</h4>
-              {["Our Mission", "Blog", "Privacy Policy", "Support"].map((l) => (
+              {["Our Mission", "Privacy Policy", "Support"].map((l) => (
                 <a
                   key={l}
                   href="#"
